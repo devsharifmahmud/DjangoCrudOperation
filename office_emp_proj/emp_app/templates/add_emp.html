@@ -11,19 +11,20 @@
 <div class="container">
     <h1>Add An Employee!</h1>
     <hr>
-    <form>
+    <form action="/add_emp" method="POST">
+        {% csrf_token %}
         <label for="first_name" >First Name</label><br>
-        <input type="text" id="first_name"><br>
+        <input type="text" id="first_name" value="{{first_name}}"><br>
         <label for="last_name" >Last Name</label><br>
-        <input type="text" id="last_name"><br>
+        <input type="text" id="last_name" value="{{last_name}}"><br>
         <label for="salary" >Salary</label><br>
-        <input type="number" id="salary"><br>
+        <input type="number" id="salary" value="{{salary}}"><br>
         <label for="department" >Department</label><br>
-        <input type="number" id="department"><br>
+        <input type="number" id="department" value="{{department}}"><br>
         <label for="role" >Role</label><br>
-        <input type="number" id="role"><br>
+        <input type="number" id="role" value="{{role}}"><br>
         <label for="bonus" >Bonus</label><br>
-        <input type="number" id="bonus"><br>
+        <input type="number" id="bonus" value="{{bonus}}"><br>
         <hr>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
