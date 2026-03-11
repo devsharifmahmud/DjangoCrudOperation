@@ -26,8 +26,9 @@ def add_emp(request):
         new_emp.save()
         return HttpResponse("Employee added successfully")
     elif request.method == 'GET':
-        print("get")
-    return render(request, 'add_emp.html')
+        return render(request, 'add_emp.html')
+    else:
+        return render(request, 'add_emp.html')
 
 def remove_emp(request):
     return render(request, 'remove_emp.html')
