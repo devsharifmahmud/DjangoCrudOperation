@@ -22,7 +22,7 @@ def add_emp(request):
         phone = int(request.POST['phone'])
         department = int(request.POST['department'])
         role = int(request.POST['role'])
-        Employee(first_name=first_name, last_name=last_name, salary=salary, bonus=bonus, phone=phone, department_id=department, role_id=role, hire_date=datetime.now())
+        new_emp = Employee(first_name=first_name, last_name=last_name, salary=salary, bonus=bonus, phone=phone, department_id=department, role_id=role, hire_date=datetime.now())
     else:
         print("get")
     return render(request, 'add_emp.html')
