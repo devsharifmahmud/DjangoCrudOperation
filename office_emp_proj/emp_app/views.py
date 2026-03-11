@@ -1,4 +1,4 @@
-from django.shortcuts import render HttpResponse
+from django.http import HttpResponse
 from .models import Employee, Role, Department
 from datetime import datetime
 
@@ -28,7 +28,7 @@ def add_emp(request):
     elif request.method == 'GET':
         return render(request, 'add_emp.html')
     else:
-        return render(request, 'add_emp.html')
+        return HttpResponse()
 
 def remove_emp(request):
     return render(request, 'remove_emp.html')
