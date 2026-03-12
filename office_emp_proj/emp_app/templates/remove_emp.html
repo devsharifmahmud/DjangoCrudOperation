@@ -16,9 +16,9 @@
             Choose Employee To Be Removed
         </button>
         <ul class="dropdown-menu">
+            {% for emp in emps %}
             <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            {% endfor %}
         </ul>
     </div>
 </div>
