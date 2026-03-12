@@ -36,6 +36,7 @@ def remove_emp(request, emp_id=0):
         try:
             emp_to_be_removed = Employee.objects.get(id=emp_id)
             emp_to_be_removed.delete()
+            return HttpResponse("Employee removed successfully")
         except:
             return HttpResponse("Please Enter a valid Employee ID")
     emps = Employee.objects.all()
