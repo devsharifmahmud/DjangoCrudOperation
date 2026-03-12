@@ -31,7 +31,8 @@ def add_emp(request):
     else:
         return HttpResponse("An Exception Occured! Employee")
 
-def remove_emp(request):
+def remove_emp(request, emp_id=0):
+
     emps = Employee.objects.all()
     context = {'emps': emps}
     return render(request, 'remove_emp.html', context)
