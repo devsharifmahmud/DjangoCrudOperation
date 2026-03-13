@@ -11,7 +11,7 @@
 <div class="container">
     <h1>Filter An Employee!</h1>
     <hr>
-     <form action="/add_emp" method="post">
+     <form action="/filter_emp" method="post">
         {% csrf_token %}
         <label for="first_name" >First Name</label><br>
         <input type="text" id="first_name" name="first_name" value="{{first_name}}"><br>
