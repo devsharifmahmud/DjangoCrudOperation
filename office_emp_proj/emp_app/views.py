@@ -44,4 +44,5 @@ def remove_emp(request, emp_id=0):
     return render(request, 'remove_emp.html', context)
 
 def filter_emp(request):
+    if request.method == 'POST':
     return render(request, 'filter_emp.html')
