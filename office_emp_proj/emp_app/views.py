@@ -49,4 +49,10 @@ def filter_emp(request):
         department = request.POST['department']
         role = request.POST['role']
         emps = Employee.objects.all()
+        if name:
+            emps = emps.filter()
+        if department:
+            pass
+        if role:
+            pass
     return render(request, 'filter_emp.html')
