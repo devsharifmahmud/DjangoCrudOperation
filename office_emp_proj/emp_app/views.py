@@ -53,7 +53,13 @@ def filter_emp(request):
         if name:
             emps = emps.filter(Q(first_name__icontains=name) | Q(first_name__icontains=name))
         if department:
-            emps = emps.filter(department_name = department)
+            emps = emps.filter(department__name__icontains = department)
         if role:
-            pass
-    return render(request, 'filter_emp.html')
+            emps = emps.filter(role__name__icontains = role)
+
+        context = {'emps': emps}
+        return render(request, 'view_all_emp.html', context)
+    elif request.method == 'GET':
+        return render(request, 'filter_emp.html')
+    else:
+        return HttpResponse("An Exception Occured! Employee")
