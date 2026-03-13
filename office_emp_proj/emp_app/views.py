@@ -53,7 +53,7 @@ def filter_emp(request):
         if name:
             emps = emps.filter(Q(first_name__icontains=name) | Q(first_name__icontains=name))
         if department:
-            pass
+            emps = emps.filter(department_name = department)
         if role:
             pass
     return render(request, 'filter_emp.html')
