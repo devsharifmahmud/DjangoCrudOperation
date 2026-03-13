@@ -45,4 +45,8 @@ def remove_emp(request, emp_id=0):
 
 def filter_emp(request):
     if request.method == 'POST':
+        name = request.POST['name']
+        department = request.POST['department']
+        role = request.POST['role']
+        emps = Employee.objects.all()
     return render(request, 'filter_emp.html')
