@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Employee, Role, Department
 from datetime import datetime
+from django.db.models import Q
 
 # Create your views here.
 def index(request):
@@ -50,7 +51,7 @@ def filter_emp(request):
         role = request.POST['role']
         emps = Employee.objects.all()
         if name:
-            emps = emps.filter()
+            emps = emps.filter(first_name__icontains=name) | Q(first_name__icontains=name)
         if department:
             pass
         if role:
