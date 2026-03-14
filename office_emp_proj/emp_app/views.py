@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Employee, Role, Department
 from datetime import datetime
@@ -48,14 +48,21 @@ def add_emp(request):
 
     return render(request, 'add_emp.html')
 
-def remove_emp(request, emp_id=0):
-    if emp_id:
-        try:
-            emp_to_be_removed = Employee.objects.get(id=emp_id)
-            emp_to_be_removed.delete()
-            return HttpResponse("Employee removed successfully")
-        except:
-            return HttpResponse("Please Enter a valid Employee ID")
+
+def remove_emp(request):
+    if request.method == 'POST':
+        emp_id = request.POST.get('emp_id')
+        if emp_id:
+            try:
+                emp_to_be_removed = Employee.objects.get(id=emp_id)
+                emp_to_be_removed.delete()
+                return HttpResponse("Employee removed successfully")
+            except Employee.DoesNotExist:
+                return HttpResponse("Invalid Employee ID")
+        else:
+            return HttpResponse("No Employee selected")
+
+    # GET request – show dropdown
     emps = Employee.objects.all()
     context = {'emps': emps}
     return render(request, 'remove_emp.html', context)
