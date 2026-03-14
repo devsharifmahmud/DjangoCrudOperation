@@ -20,16 +20,33 @@ def add_emp(request):
         last_name = request.POST['last_name']
         salary = int(request.POST['salary'])
         bonus = int(request.POST['bonus'])
-        phone = int(request.POST['phone'])
-        department = int(request.POST['department'])
-        role = int(request.POST['role'])
-        new_emp = Employee(first_name=first_name, last_name=last_name, salary=salary, bonus=bonus, phone=phone, department_id=department, role_id=role, hire_date=datetime.now())
+        phone = request.POST['phone']
+
+        department_name = request.POST['department']
+        role_name = request.POST['role']
+
+        # Department create or get
+        department, created = Department.objects.get_or_create(name=department_name)
+
+        # Role create or get
+        role, created = Role.objects.get_or_create(name=role_name)
+
+        # Employee create
+        new_emp = Employee(
+            first_name=first_name,
+            last_name=last_name,
+            salary=salary,
+            bonus=bonus,
+            phone=phone,
+            department=department,
+            role=role,
+            hire_date=datetime.now()
+        )
         new_emp.save()
+
         return HttpResponse("Employee added successfully")
-    elif request.method == 'GET':
-        return render(request, 'add_emp.html')
-    else:
-        return HttpResponse("An Exception Occured! Employee")
+
+    return render(request, 'add_emp.html')
 
 def remove_emp(request, emp_id=0):
     if emp_id:
