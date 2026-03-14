@@ -16,7 +16,6 @@ def all_emp(request):
 
 def add_emp(request):
     if request.method == 'POST':
-        print("post")
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         salary = int(request.POST['salary'])
