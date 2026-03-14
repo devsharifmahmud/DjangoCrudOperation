@@ -13,17 +13,16 @@
     <hr>
     <h2>Remove Employee</h2>
 
-<select onchange="window.location.href=this.value">
-
-    <option>Select Employee to Delete</option>
-
-    {% for emp in emps %}
-    <option value="/remove_emp/{{emp.id}}">
-        {{emp.first_name}} {{emp.last_name}}
-    </option>
-    {% endfor %}
-
-</select>
+<div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropdown button
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+</div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
